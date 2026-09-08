@@ -11,6 +11,19 @@ This project demonstrates how a client lead intake workflow can be automated usi
 The workflow accepts structured lead data, validates and normalizes the payload, applies routing logic, and produces downstream outputs for different operational paths.
 
 The purpose of this repository is to demonstrate practical automation engineering capability with defensible evidence, documentation, synthetic test data, and a public-safe workflow export.
+## Workflow Overview
+
+![Client Lead Intake Automation workflow overview](screenshots/workflow-overview.png)
+
+The workflow demonstrates:
+
+- webhook-based lead intake
+- validation and normalization
+- explicit validation branching
+- sales/support routing
+- structured success response
+- validation error handling
+
 
 ## What this demonstrates
 
@@ -120,3 +133,4 @@ It should not be represented as:
 ZUHAYR SYSTEMS
 
 Automation Engineering - APIs - n8n - Workflow Systems
+
