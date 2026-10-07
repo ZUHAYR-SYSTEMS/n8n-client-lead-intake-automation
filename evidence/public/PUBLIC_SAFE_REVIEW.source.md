@@ -6,7 +6,7 @@ Status: PASS with disclosure.
 - Do not describe it as client work.
 - No personal data, customer data, passwords, OAuth tokens, or API keys are included.
 - Do not publish internal n8n database files, runtime logs, or external credential configurations.
-- The two direct-output XLSX files contain synthetic names, `.example.test` email addresses, and simulated requests only.
+- The payloads in `examples/synthetic-data/` contain synthetic names, `example.test` email addresses, and simulated requests only.
 
 ## Publication candidate
 

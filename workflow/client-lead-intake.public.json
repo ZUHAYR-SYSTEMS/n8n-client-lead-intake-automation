@@ -1,10 +1,10 @@
-﻿{
+{
   "id": "8JUIeRixxKJn7Zb2",
   "name": "SIMULATED - Client Lead Intake Automation (Local)",
   "nodes": [
     {
       "parameters": { "httpMethod": "POST", "path": "client-lead-intake-v1", "responseMode": "responseNode", "options": {} },
-      "id": "4a49858d-da47-47a9-9634-bf5a4df775df", "name": "Webhook", "type": "n8n-nodes-base.webhook", "typeVersion": 2.1, "position": [-640, 0]
+      "id": "4a49858d-da47-47a9-9634-bf5a4df775df", "webhookId": "dce5eae5-8916-4f54-9ba2-af475c8e1484", "name": "Webhook", "type": "n8n-nodes-base.webhook", "typeVersion": 2.1, "position": [-640, 0]
     },
     {
       "parameters": { "jsCode": "const b = $json.body ?? {};\nconst name = String(b.name ?? '').trim();\nconst email = String(b.email ?? '').trim().toLowerCase();\nconst department = String(b.department ?? '').trim().toLowerCase();\nconst errors = [];\nif (!name) errors.push('name is required');\nif (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) errors.push('valid email is required');\nif (!['sales', 'support'].includes(department)) errors.push('department must be sales or support');\nreturn [{ json: { valid: errors.length === 0, httpStatus: errors.length ? 400 : 200, errors, lead_name: name, email, phone: String(b.phone ?? '').trim(), inquiry: String(b.inquiry ?? '').trim(), department, received_at: new Date().toISOString() } }];" },
@@ -27,7 +27,7 @@
       "id": "support", "name": "Support Result", "type": "n8n-nodes-base.set", "typeVersion": 3.5, "position": [320, -20]
     },
     {
-      "parameters": { "respondWith": "json", "responseBody": "={{ $json }}", "options": { "responseCode": "={{ $json.httpStatus }}" } },
+      "parameters": { "respondWith": "json", "responseBody": "={{ $json }}", "options": { "responseCode": 200 } },
       "id": "success-response", "name": "Respond Success", "type": "n8n-nodes-base.respondToWebhook", "typeVersion": 1.4, "position": [560, -100]
     },
     {

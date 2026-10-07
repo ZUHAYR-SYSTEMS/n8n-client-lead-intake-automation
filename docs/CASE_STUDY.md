@@ -40,9 +40,9 @@ Supporting artifacts include:
 
 - public-safe n8n workflow export
 - architecture documentation
-- test result evidence
-- sales routing preview
-- support routing preview
+- synthetic request payloads and expected responses
+- a local verification script (n8n 2.36.9)
+- reproduced test results
 - public-safe review documentation
 
 ## Reusable engineering value

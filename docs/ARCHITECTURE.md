@@ -6,25 +6,32 @@ The Client Lead Intake Automation demonstrates a structured intake and routing p
 
 ## Logical flow
 
+```
 Lead Source
     |
     v
-Webhook / Intake Trigger
+Webhook (POST /webhook/client-lead-intake-v1)
     |
     v
-Input Validation
+Validate & Normalize (Code)
     |
     v
-Normalization / Structured Payload
+Valid Input? --- no ---> HTTP 400 { ok: false, errors }
+    |
+   yes
     |
     v
-Routing Logic
-   / \
-  /   \
-Sales  Support / Other Path
- |          |
- v          v
-Structured downstream output
+Route: Sales?
+   /      \
+ yes       no
+  |         |
+  v         v
+Sales     Support
+Result    Result
+  \         /
+   v       v
+HTTP 200 { status, team, message }
+```
 
 ## Engineering goals
 
@@ -42,14 +49,15 @@ The workflow was designed to demonstrate:
 
 The lab uses synthetic lead data only.
 
-Example fields may include:
+Request fields read by the workflow:
 
-- name
-- email
-- request category
-- message
-- source
-- routing result
+- name (required)
+- email (required, basic format check)
+- department (required: sales or support)
+- inquiry (optional)
+- phone (optional)
+
+Successful responses contain status, team, and message. Validation failures return ok: false and an errors list.
 
 No real customer records are required for the portfolio version.
 

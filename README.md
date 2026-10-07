@@ -60,7 +60,10 @@ docs/
   LIMITATIONS.md
 
 examples/
-  synthetic-data/
+  synthetic-data/      request payloads and expected responses
+
+scripts/
+  verify-local.sh      local reproduction against n8n 2.36.9
 
 evidence/
   public/
@@ -73,13 +76,11 @@ Public evidence is stored separately from the original internal lab evidence.
 
 The source workflow and original evidence remain preserved outside this public repository.
 
-Included public evidence may contain:
+Included public evidence:
 
-- test result summary
-- public-safe review notes
-- test evidence preview
-- sales routing preview
-- support routing preview
+- test results reproduced by `scripts/verify-local.sh` (evidence/public/TEST_RESULTS.source.md)
+- public-safe review notes (evidence/public/PUBLIC_SAFE_REVIEW.source.md)
+- test evidence preview from the original lab run (screenshots/test-evidence-preview.png); its inputs and HTTP results match the reproduced scenarios
 
 ## Public-safe design
 
@@ -102,6 +103,14 @@ Public-safe workflow export:
 
 workflow/client-lead-intake.public.json
 
+After import and publish, the workflow accepts `POST /webhook/client-lead-intake-v1` with a JSON body containing `name`, `email`, `department` (`sales` or `support`), and optional `inquiry` and `phone`. It responds with JSON only:
+
+- valid sales lead: HTTP 200 `{"status":"qualified","team":"sales","message":"Synthetic lead accepted and routed to Sales."}`
+- valid support lead: HTTP 200 `{"status":"received","team":"support","message":"Synthetic lead accepted and routed to Support."}`
+- invalid input: HTTP 400 `{"ok":false,"errors":[...]}`
+
+It does not write files or call external systems.
+
 The workflow should be reviewed and configured with environment-specific credentials and endpoints before any real deployment.
 
 ## Testing
@@ -113,6 +122,12 @@ PASS WITH DISCLOSURE / PORTFOLIO-READY
 Testing evidence is documented in:
 
 docs/TESTING.md
+
+To reproduce locally (requires Docker and curl; synthetic data only):
+
+```
+./scripts/verify-local.sh
+```
 
 ## Portfolio positioning
 
