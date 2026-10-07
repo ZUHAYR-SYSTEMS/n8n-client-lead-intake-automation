@@ -1,6 +1,6 @@
 ﻿# n8n Client Lead Intake Automation
 
-A portfolio-grade n8n automation proof for structured client lead intake, validation, routing, and downstream handling.
+A portfolio n8n automation lab for structured client lead intake: input validation, a sales/support routing decision, and a JSON HTTP response.
 
 > Disclosure: This is a simulated/internal automation lab using synthetic data. It was built and tested locally. It is not paid client work and is not a production deployment.
 
@@ -8,7 +8,7 @@ A portfolio-grade n8n automation proof for structured client lead intake, valida
 
 This project demonstrates how a client lead intake workflow can be automated using n8n.
 
-The workflow accepts structured lead data, validates and normalizes the payload, applies routing logic, and produces downstream outputs for different operational paths.
+The workflow accepts structured lead data over a webhook, validates and normalizes the payload, decides whether the lead is routed to sales or support, and returns a JSON HTTP response (200 for accepted leads, 400 with validation errors). It does not write files or call downstream systems.
 
 The purpose of this repository is to demonstrate practical automation engineering capability with defensible evidence, documentation, synthetic test data, and a public-safe workflow export.
 ## Workflow Overview
@@ -80,7 +80,7 @@ Included public evidence:
 
 - test results reproduced by `scripts/verify-local.sh` (evidence/public/TEST_RESULTS.source.md)
 - public-safe review notes (evidence/public/PUBLIC_SAFE_REVIEW.source.md)
-- test evidence preview from the original lab run (screenshots/test-evidence-preview.png); its inputs and HTTP results match the reproduced scenarios
+- historical test-log screenshot from the original lab run (screenshots/test-evidence-preview.png): a manually maintained evidence workbook that summarises that run's results. It is not workflow-generated output (the workflow writes no files); its inputs and HTTP status codes match the reproduced scenarios
 
 ## Public-safe design
 

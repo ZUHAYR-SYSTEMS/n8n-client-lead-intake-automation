@@ -34,7 +34,7 @@ Available evidence includes:
 
 - test results reproduced by `scripts/verify-local.sh` (evidence/public/TEST_RESULTS.source.md)
 - public-safe review
-- test evidence preview from the original lab run; its inputs and HTTP results match the reproduced scenarios
+- historical test-log screenshot from the original lab run (screenshots/test-evidence-preview.png): a manually maintained evidence workbook that summarises that run's results. It is not workflow-generated output (the workflow writes no files); its inputs and HTTP status codes match the reproduced scenarios
 
 ## Reproducing the tests
 
