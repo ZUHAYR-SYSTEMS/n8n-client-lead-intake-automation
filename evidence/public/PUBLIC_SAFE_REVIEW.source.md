@@ -1,6 +1,6 @@
 # Public-Safe Review
 
-Status: PASS with disclosure.
+Public-safe review: no credentials or real data found; synthetic data only.
 
 - Label the work as **simulated/internal automation lab**.
 - Do not describe it as client work.

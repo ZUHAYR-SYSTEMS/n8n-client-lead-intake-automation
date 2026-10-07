@@ -2,11 +2,11 @@
 
 ## Status
 
-PASS WITH DISCLOSURE / PORTFOLIO-READY
+Simulated portfolio lab (synthetic data). Locally reproducible: the committed workflow passes 3 synthetic scenarios (sales 200, support 200, invalid 400) via `scripts/verify-local.sh` on n8n 2.36.9, CLI import path. Not deployed; not production-ready; editor (UI) import untested.
 
 ## Test purpose
 
-Testing was performed to confirm that the workflow could process synthetic lead data and produce the expected routing and downstream output behavior.
+Testing was performed to confirm that the workflow validates synthetic lead data, makes the sales/support routing decision, and returns the expected JSON HTTP response (200 for accepted leads, 400 with validation errors).
 
 ## Test scope
 
@@ -16,7 +16,7 @@ The local lab test scope covers:
 - field handling
 - normalization behavior
 - routing decisions
-- expected downstream output paths
+- JSON HTTP response status codes and bodies
 - evidence capture
 - public-safe review
 

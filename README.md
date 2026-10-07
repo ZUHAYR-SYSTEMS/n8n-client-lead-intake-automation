@@ -115,9 +115,9 @@ The workflow should be reviewed and configured with environment-specific credent
 
 ## Testing
 
-The underlying automation lab reached:
+Status:
 
-PASS WITH DISCLOSURE / PORTFOLIO-READY
+Simulated portfolio lab (synthetic data). Locally reproducible: the committed workflow passes 3 synthetic scenarios (sales 200, support 200, invalid 400) via `scripts/verify-local.sh` on n8n 2.36.9, CLI import path. Not deployed; not production-ready; editor (UI) import untested.
 
 Testing evidence is documented in:
 
